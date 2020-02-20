@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="xust.lfh.dao.BookMapper">
+    <!--增加一本书-->
+    <insert id="addBook" parameterType="Books">
+        insert into ssmbook.books (bookNo,bookName, author, publish, publishtime, price, detail)
+        values(#{bookNo},#{bookName},#{author},#{publish},#{publishtime},#{price},#{detail})
+    </insert>
+    <!--删除一本书-->
+    <delete id="deleteBookByNo" parameterType="int">
+        delete from ssmbook.books
+        where bookNo = #{bookNo}
+    </delete>
+    <!--修改一本书-->
+    <update id="updateBook" parameterType="Books">
+        update ssmbook.books
+        set bookNo=#{bookNo},bookName=#{bookName},author=#{author},publish = #{publish},
+            publishtime=#{publishtime},price=#{price},detail=#{detail}
+    </update>
+
+    <!--查询一本书-->
+    <select id="queryBookByNo" resultType="Books">
+        select * from ssmbook.books
+         where bookNo=#{bookNo}
+    </select>
+
+    <!--查询全部书-->
+    <select id="queryAllBook" resultType="Books">
+        select * from books
+    </select>
+
+
+</mapper>
